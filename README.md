@@ -1,2 +1,2 @@
 # banco-de-dados
-Atividade em grupo - Instudo
+Banco de Dados- Repositório organizado com o intuito de ter maior acesso aos arquivos do grupo referentes a disciplina.
