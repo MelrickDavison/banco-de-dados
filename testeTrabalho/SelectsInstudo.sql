@@ -16,3 +16,9 @@ SELECT COUNT(DISTINCT(FK_matricula)) FROM materiaaluno;
 SELECT FK_login AS nome, FK_IdTurma AS turma FROM alunoturma WHERE FK_IdTurma = 23 OR FK_IdTurma = 12;
 -- Quais são os professores que ministram as turmas de Informática e de História?
 SELECT FK_login FROM profturma WHERE FK_IdTurma = 23 OR FK_IdTurma = 12;
+-- Mostre os alunos cadastrados na matéria de história em ordem crescente
+SELECT FK_login AS alunos, FK_matricula AS matricula, FK_idTurma FROM alunoturma WHERE FK_IdTurma = 34 ORDER BY FK_login ASC;
+-- Qual a especialização do professor David?
+SELECT especializacao FROM professores WHERE FK_login = "David";
+-- Quais as vídeos aulas que possuem menos de 100 minutos de duração? Mostre-as em ordem crescente.
+SELECT * FROM videoaula WHERE duracao < 100 ORDER BY duracao ASC;
