@@ -44,7 +44,7 @@ SELECT a.nome AS nomeAluno, d.nome AS nomeDisciplina, ad.nota FROM aluno a INNER
 ON a.matricula = ad.FK_matricula INNER JOIN disciplina d 
 ON d.id = ad.FK_id_disciplina INNER JOIN professor p 
 ON p.siape = d.FK_id_professor 
-WHERE p.nome = "João" GROUP BY FK_id_disciplina HAVING MAX(nota);
+WHERE p.nome = "João" GROUP BY ad.FK_id_disciplina HAVING MAX(ad.nota);
 
 #Quais disciplinas os estudantes David e Henrique cursam juntos?
 SELECT nome FROM disciplina WHERE id IN (
