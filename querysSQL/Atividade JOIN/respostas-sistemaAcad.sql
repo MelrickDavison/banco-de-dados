@@ -28,8 +28,8 @@ SELECT FK_id_curso FROM cursodisciplina WHERE FK_id_disciplina IN (
 SELECT id FROM disciplina WHERE FK_id_professor = (
 SELECT siape FROM professor WHERE nome = "João")));
 
-# Utilizando o JOIN - ERRO
-SELECT c.nome AS nomeCurso FROM curso c INNER JOIN cursodisciplina cd 
+# Utilizando o JOIN - NICE
+SELECT distinct  c.nome AS nomeCurso FROM curso c INNER JOIN cursodisciplina cd 
 ON c.id = cd.FK_id_curso INNER JOIN disciplina d
 ON d.id = cd.FK_id_disciplina INNER JOIN professor p
 ON p.siape = d.FK_id_professor WHERE p.nome = "João";
@@ -50,10 +50,14 @@ SELECT FK_id_disciplina FROM alunodisciplina WHERE FK_matricula = (
 SELECT matricula FROM aluno WHERE nome = "David")) AND id IN (SELECT FK_id_disciplina FROM alunodisciplina WHERE FK_matricula = (
 SELECT matricula FROM aluno WHERE nome = "Henrique"));
 
-#Usando JOIN - ERRO
-SELECT * FROM disciplina d INNER JOIN alunodisciplina ad
+#Usando JOIN - NICE
+SELECT d.nome FROM disciplina d INNER JOIN alunodisciplina ad
 ON d.id = ad.FK_id_disciplina INNER JOIN aluno a 
-ON ad.FK_matricula = a.matricula  WHERE a.nome = "Henrique" AND a.nome = "David";
+ON ad.FK_matricula = a.matricula JOIN alunodisciplina ad2 
+ON d.id = ad2.FK_id_disciplina JOIN aluno a2 
+ON ad2.FK_matricula = a2.matricula 
+WHERE a.nome = "Henrique" AND a2.nome = "David";
+
 
 #Quais os estudantes que cursam Integrado em Informática?
 SELECT nome FROM aluno WHERE FK_id_curso = (
