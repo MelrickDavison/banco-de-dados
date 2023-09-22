@@ -1,4 +1,15 @@
-INSERT INTO usuarios VALUES ('BielzinhoDelas','Grota','(82)99805-4585'),('CESMAC','Centro','(82)99855-4585'),('David','Oca de Maceió','(82)99002-8922'),('Fabricio','Eustaquio','(82)98202-0245'),('Meurriqui','Esgoto do RL','(82)98202-0246'),('Nenelson','Praça das Maravilhas','(82)09805-4585'),('OSCORP','New York','(82)82202-0246'),('Pablo','Quinto dos Infernos','(82)98220-0245'),('Qemmili','Oca de Messias','(82)99001-8922'),('UFAL','Onde Judas Bateu as Botas','(82)98282-0246');
+INSERT INTO usuarios 
+VALUES ('BielzinhoDelas','Gabriel Luiz Lourenço Farias','soubunito22', "2006-04-20", "", "2022305322"),
+#MODIFICAR:
+('CesmacAL','CESMAC','Cesmac123', ""),
+('David','Oca de Maceió','(82)99002-8922'),
+('Fabricio','Eustaquio','(82)98202-0245'),
+('Meurriqui','Esgoto do RL','(82)98202-0246'),
+('Nenelson','Praça das Maravilhas','(82)09805-4585'),
+('OSCORP','New York','(82)82202-0246'),
+('Pablo','Quinto dos Infernos','(82)98220-0245'),
+('Qemmili','Oca de Messias','(82)99001-8922'),
+('UFAL','Onde Judas Bateu as Botas','(82)98282-0246');
 
 INSERT INTO alunos VALUES ('Qemmili',9061,'15/07/2006'),('Fabrício',9062,'06/09/2006'),('BielzinhoDelas',9063,'20/04/2006'),('Meurriqui',9064,'04/09/2006');
 
@@ -25,4 +36,3 @@ INSERT INTO materiaaluno VALUES(9063, "BielzinhoDelas", "POO-01"),(9063, "Bielzi
 INSERT INTO profturma VALUES('Nenelson', 34), ("Pablo", 12), ("David", 23);
 
 INSERT INTO materiaprof VALUES('Nenelson', "POO-01"), ("Pablo", "REDES-01"), ("David", "BD-01");
-
