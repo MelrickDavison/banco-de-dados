@@ -3,41 +3,41 @@ USE instudo;
 
 
 CREATE TABLE alunos(
-login VARCHAR(50),
-nome VARCHAR(50),
-senha VARCHAR(50),
-nascimento DATE,
+login VARCHAR(50) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+senha VARCHAR(50) NOT NULL,
+nascimento DATE NOT NULL,
 foto VARCHAR(50),
- matricula INT UNIQUE,
+ matricula INT UNIQUE NOT NULL,
  PRIMARY KEY(login) 
 );
 
 CREATE TABLE professores(
-login VARCHAR(50),
-nome VARCHAR(50),
-senha VARCHAR(50),
-nascimento DATE,
+login VARCHAR(50) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+senha VARCHAR(50) NOT NULL,
+nascimento DATE NOT NULL,
 foto VARCHAR(50),
-especializacao VARCHAR(50),
-siape VARCHAR(50),
+especializacao VARCHAR(50) NOT NULL,
+curriculo varchar(50) NOT NULL,
+siape VARCHAR(50) NOT NULL,
 
 PRIMARY KEY(login)
 );
 
 CREATE TABLE empresa(
-login VARCHAR(50),
-nome VARCHAR(50),
-senha VARCHAR(50),
-nascimento DATE,
-foto VARCHAR(50),
-cnpj VARCHAR(18),
+login VARCHAR(50) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+senha VARCHAR(50) NOT NULL,
+foto VARCHAR(50) ,
+cnpj VARCHAR(18) NOT NULL,
 PRIMARY KEY(login)
 );
 
 CREATE TABLE perfilAluno(
 FK_login VARCHAR(50),
-nomeUser VARCHAR(50),
-dataDeCriacao VARCHAR(10),
+nomeUser VARCHAR(50) NOT NULL,
+dataDeCriacao DATE,
 
 FOREIGN KEY(FK_login) REFERENCES alunos(login),
 PRIMARY KEY(nomeUser)
