@@ -139,12 +139,24 @@ PRIMARY KEY(FK_login, FK_IdMateria)
 );
 
 CREATE TABLE atividades(
+Id INT auto_increment,
 FK_IdMaterias VARCHAR(50),
 quantPontos INT,
 gabarito VARCHAR(50),
 
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
-PRIMARY KEY(FK_IdMaterias)
+PRIMARY KEY(Id, FK_IdMaterias)
+);
+
+CREATE TABLE atividadeAlunos(
+FK_IdAtividade INT,
+FK_Login VARCHAR(50),
+pontosConquistados INT,
+
+FOREIGN KEY (FK_IdAtividade) REFERENCES atividades(Id),
+FOREIGN KEY (FK_Login) REFERENCES alunos(login),
+
+PRIMARY KEY(FK_IdAtividade, FK_Login)
 );
 
 CREATE TABLE conteudo(
