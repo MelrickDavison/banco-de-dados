@@ -8,7 +8,7 @@ nome VARCHAR(50) NOT NULL,
 senha VARCHAR(50) NOT NULL,
 nascimento DATE NOT NULL,
 foto VARCHAR(50),
- matricula INT UNIQUE NOT NULL,
+matricula INT UNIQUE NOT NULL,
  PRIMARY KEY(login) 
 );
 
@@ -108,7 +108,7 @@ FK_IdTurma INT,
 FOREIGN KEY (FK_login) REFERENCES alunos(login),
 FOREIGN KEY (FK_IdTurma) REFERENCES turmas(ID),
 
-PRIMARY KEY(FK_login, FK_matricula, FK_IdTurma)
+PRIMARY KEY(FK_login, FK_IdTurma)
 );
 
 CREATE TABLE materias(
