@@ -1,9 +1,9 @@
-INSERT INTO alunos(login, nome, senha, nascimento, foto, matricula) VALUES  ('BielzinhoDelas', 'Gabriel Luiz', 'soubunito22', "2006-04-20", "", 2022305322), ('LLL_Fabricio','Fabricio Arcanjo','fabricio9','2006-09-06', '', 2022308), ('MelrickD', 'Melrick Davison','melrick2016','2006-09-04', '', 2022192023), ('Qemmili13', 'Kemylly Gabrielly','soucorinthiana','2006-07-15','', 12341214);
+INSERT INTO alunos(login, nome, senha, nascimento, foto, matricula, pontos) VALUES  ('BielzinhoDelas', 'Gabriel Luiz', 'soubunito22', "2006-04-20", "", 2022305322, 1009), ('LLL_Fabricio','Fabricio Arcanjo','fabricio9','2006-09-06', '', 2022308, 1011), ('MelrickD', 'Melrick Davison','melrick2016','2006-09-04', '', 2022192023, 897), ('Qemmili13', 'Kemylly Gabrielly','soucorinthiana','2006-07-15','', 12341214, 1011);
 
 INSERT INTO empresa(login, nome, senha, foto, cnpj) VALUES ('oscorp_oficial','OSCORP','ihateSpiderMan19','', '192120130'), ('CesmacAL','CESMAC','Cesmac123', "",'13123124'), ('UFAL_oficial','UFAL','ufalzinhodoscria','','213981209');
 
-INSERT INTO professores VALUES ('dhs.lima','David','david1314','1990-09-13','','Mestrado','','19000'), ('Nenelson', 'Elinelson', 'ilovematematica', '1890-10-23', '', 'Mestrado', '', '09131'), ('pabloDosTeclados','Pablo','2555.255.255.255','1999-03-10','', 'Graduado', '', '192109');
 
+INSERT INTO professores VALUES ('dhs.lima','David','david1314','1990-09-13','','Mestrado','','19000'), ('Nenelson', 'Elinelson', 'ilovematematica', '1890-10-23', '', 'Mestrado', '', '09131'), ('pabloDosTeclados','Pablo','2555.255.255.255','1999-03-10','', 'Graduado', '', '192109');
 INSERT INTO turmas(nome, ID) VALUES ('Português', 1), ("Matematica", 2), ("Banco de Dados", 3), ("Redes", 4);
 
 INSERT INTO perfilaluno VALUES ('LLL_Fabricio','fabricio_arcanjo.09','2021-09-30'),('BielzinhoDelas','gabrielLuiz','2020-02-21'),('Qemmili13','Kemylly._','2022-12-13'),('MelrickD','melrickkj','2023-10-14');
@@ -14,7 +14,9 @@ INSERT INTO perfilprofessores VALUES ('Nenelson','NelSon','15/01/2010'),('dhs.li
 
 INSERT INTO materias VALUES("POO-01", "Class"), ("BD-01", "Normalização"),("REDES-01", "Camadas de Aplicação");
 
-INSERT INTO atividades VALUES("POO-01", 100, "B, C, E, F"), ("BD-01", 1, "D, C, F, F"),("REDES-01", 1000, "A, C, E, C");
+INSERT INTO atividades VALUES(1, "POO-01", 100, "B, C, E, F"), (2, "BD-01", 1, "D, C, F, F"),(3, "REDES-01", 1000, "A, C, E, C");
+
+INSERT INTO atividadealunos VALUES (1, 'BielzinhoDelas', 9), (2, 'BielzinhoDelas', 0), (3, 'BielzinhoDelas', 1000),  (1, 'MelrickD', 6), (2, 'MelrickD', 1), (3, 'MelrickD', 890),  (1, 'LLL_Fabricio', 10), (2, 'LLL_Fabricio', 1), (3, 'LLL_Fabricio', 1000), (1, 'Qemmili13', 10), (2, 'Qemmili13',  1), (3, 'Qemmili13', 999);  
 
 INSERT INTO conteudo VALUES("POO-01", "Apostila 12"), ("BD-01","Apostila 134"),("REDES-01", "Apostila 189");
 
