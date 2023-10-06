@@ -9,6 +9,8 @@ senha VARCHAR(50) NOT NULL,
 nascimento DATE NOT NULL,
 foto VARCHAR(50),
 matricula INT UNIQUE NOT NULL,
+pontos INT,
+
  PRIMARY KEY(login) 
 );
 
