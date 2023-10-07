@@ -38,8 +38,9 @@ PRIMARY KEY(login)
 
 CREATE TABLE perfilAluno(
 FK_login VARCHAR(50),
-nomeUser VARCHAR(50) NOT NULL,
+nomeUser VARCHAR(50) NOT NULL UNIQUE,
 dataDeCriacao DATE,
+seguidores INT,
 
 FOREIGN KEY(FK_login) REFERENCES alunos(login),
 PRIMARY KEY(nomeUser)
@@ -47,8 +48,9 @@ PRIMARY KEY(nomeUser)
 
 CREATE TABLE perfilEmpresa(
 FK_login VARCHAR(50),
-nomeUser VARCHAR(50),
-dataDeCriacao VARCHAR(10),
+nomeUser VARCHAR(50) UNIQUE,
+dataDeCriacao DATE,
+seguidores INT,
 
 FOREIGN KEY(FK_login) REFERENCES empresa(login),
 PRIMARY KEY(nomeUser)
@@ -56,34 +58,139 @@ PRIMARY KEY(nomeUser)
 
 CREATE TABLE perfilprofessores(
 FK_login VARCHAR(50),
-nomeUser VARCHAR(50),
-dataDeCriacao VARCHAR(10),
+nomeUser VARCHAR(50) UNIQUE,
+dataDeCriacao DATE,
+seguidores INT,
 
 FOREIGN KEY(FK_login) REFERENCES professores(login),
 PRIMARY KEY(nomeUser)
 );
 
+CREATE TABLE amizadesAlunos(
+	FK_userAluno VARCHAR(50),
+    FK_userAluno2 VARCHAR(50),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
+    FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeuser),
+    PRIMARY KEY(FK_userAluno, FK_userAluno2)
+);
+
+CREATE TABLE amizadesAlunoProfessor(
+	FK_userAluno VARCHAR(50),
+    FK_userProfessor VARCHAR(50),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
+    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeuser),
+    PRIMARY KEY(FK_userAluno, FK_userProfessor)
+);
+
+CREATE TABLE amizadesAlunoEmpresa(
+	FK_userAluno VARCHAR(50),
+    FK_userEmpresa VARCHAR(50),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
+    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeuser),
+    PRIMARY KEY(FK_userAluno, FK_userEmpresa)
+);
+
+CREATE TABLE amizadesProfessorEmpresa(
+    FK_userProfessor VARCHAR(50),
+    FK_userEmpresa VARCHAR(50),
+    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeuser),
+    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeuser),
+    PRIMARY KEY(FK_userProfessor, FK_userEmpresa)
+);
+
+CREATE TABLE empresaProfessor(
+	FK_loginEmpresa VARCHAR(50),
+    FK_loginProfessor VARCHAR(50),
+    FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
+    FOREIGN KEY(FK_loginProfessor) REFERENCES professores(login),
+    PRIMARY KEY(FK_loginEmpresa, FK_loginProfessor)
+);
+
+CREATE TABLE empresaAluno(
+	FK_loginEmpresa VARCHAR(50),
+    FK_loginAluno VARCHAR(50),
+    FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
+    FOREIGN KEY(FK_loginAluno) REFERENCES alunos(login),
+    PRIMARY KEY(FK_loginEmpresa, FK_loginAluno)
+);
+
+
 CREATE TABLE postsAluno(
+id INT UNIQUE,
 FK_nomeUser VARCHAR(50),
 
 
 tipo VARCHAR(50),
 conteudo VARCHAR(50),
+comentarios VARCHAR(250),
+dtComentario DATE NOT NULL,
+likes INT,
 
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
-PRIMARY KEY(FK_nomeUser)
+#INDEX idxPostsAluno(id),
+PRIMARY KEY(FK_nomeUser, id)
 );
 
 CREATE TABLE postsprofessores(
+id INT UNIQUE,
 FK_nomeUser VARCHAR(50),
 
 
 tipo VARCHAR(50),
 conteudo VARCHAR(50),
+comentarios VARCHAR(250),
+dtComentario DATE NOT NULL,
+likes INT,
 
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilprofessores(nomeUser),
-PRIMARY KEY(FK_nomeUser)
+PRIMARY KEY(FK_nomeUser, id)
 );
+
+CREATE TABLE postsempresas(
+id INT UNIQUE,
+FK_nomeUser VARCHAR(50),
+
+
+tipo VARCHAR(50),
+conteudo VARCHAR(50),
+comentarios VARCHAR(250),
+dtComentario DATE NOT NULL,
+likes INT,
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilempresa(nomeUser),
+PRIMARY KEY(FK_nomeUser, id)
+);
+
+CREATE TABLE postsSalvosAlunos(
+FK_idPost INT, 
+FK_nomeUser VARCHAR(50), 
+FOREIGN KEY(FK_idPost) REFERENCES postsAluno(id),
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
+
+PRIMARY KEY(FK_idPost, FK_nomeUser)
+
+);
+
+CREATE TABLE postsSalvosProfessores(
+FK_idPost INT,
+FK_nomeUser VARCHAR(50),
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilprofessores(nomeUser),
+FOREIGN KEY(FK_idPost) REFERENCES postsProfessores(id),
+
+PRIMARY KEY(FK_idPost, FK_nomeUser)
+);
+
+CREATE TABLE postsSalvosEmpresas(
+FK_idPost INT,
+FK_nomeUser VARCHAR(50),
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilempresa(nomeUser),
+FOREIGN KEY(FK_idPost) REFERENCES postsEmpresas(id),
+
+PRIMARY KEY(FK_idPost, FK_nomeUser)
+);
+
 
 CREATE TABLE turmas(
 ID INT,
@@ -163,6 +270,7 @@ PRIMARY KEY(FK_IdAtividade, FK_Login)
 );
 
 CREATE TABLE conteudo(
+dtConteudo DATE,
 FK_IdMaterias VARCHAR(50),
 apostilas VARCHAR(50),
 
@@ -171,8 +279,12 @@ PRIMARY KEY(FK_IdMaterias)
 );
 
 CREATE TABLE videoAula(
+dtConteudo DATE,
 FK_IdMaterias VARCHAR(50),
 duracao INT,
+comentarios VARCHAR(250),
+dtComentario DATE NOT NULL,
+likes INT,
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
 PRIMARY KEY(FK_IdMaterias)
 );
