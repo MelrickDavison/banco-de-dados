@@ -153,6 +153,7 @@ PRIMARY KEY(Id, FK_IdMaterias)
 CREATE TABLE atividadeAlunos(
 FK_IdAtividade INT,
 FK_Login VARCHAR(50),
+resposta VARCHAR(50),
 pontosConquistados INT,
 
 FOREIGN KEY (FK_IdAtividade) REFERENCES atividades(Id),
