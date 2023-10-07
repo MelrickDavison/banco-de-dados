@@ -69,32 +69,32 @@ PRIMARY KEY(nomeUser)
 CREATE TABLE amizadesAlunos(
 	FK_userAluno VARCHAR(50),
     FK_userAluno2 VARCHAR(50),
-    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
-    FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeuser),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
+    FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userAluno2)
 );
 
 CREATE TABLE amizadesAlunoProfessor(
 	FK_userAluno VARCHAR(50),
     FK_userProfessor VARCHAR(50),
-    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
-    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeuser),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
+    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userProfessor)
 );
 
 CREATE TABLE amizadesAlunoEmpresa(
 	FK_userAluno VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
-    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeuser),
-    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeuser),
+    FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
+    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userEmpresa)
 );
 
 CREATE TABLE amizadesProfessorEmpresa(
     FK_userProfessor VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
-    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeuser),
-    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeuser),
+    FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
+    FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userProfessor, FK_userEmpresa)
 );
 
