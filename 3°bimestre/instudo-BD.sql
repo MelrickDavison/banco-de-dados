@@ -215,6 +215,7 @@ PRIMARY KEY(FK_login, FK_IdTurma)
 
 CREATE TABLE materias(
 IdMateria VARCHAR(50),
+nome VARCHAR(50),
 assuntos VARCHAR(50),
 
 PRIMARY KEY(IdMateria)
