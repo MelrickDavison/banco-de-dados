@@ -67,18 +67,16 @@ PRIMARY KEY(nomeUser)
 );
 
 CREATE TABLE amizadesAlunos(
-    FK_userAluno VARCHAR(50),
+	FK_userAluno VARCHAR(50),
     FK_userAluno2 VARCHAR(50),
-	
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userAluno2)
 );
 
 CREATE TABLE amizadesAlunoProfessor(
-    FK_userAluno VARCHAR(50),
+	FK_userAluno VARCHAR(50),
     FK_userProfessor VARCHAR(50),
-	
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userProfessor)
@@ -95,27 +93,41 @@ CREATE TABLE amizadesAlunoEmpresa(
 CREATE TABLE amizadesProfessorEmpresa(
     FK_userProfessor VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
-	
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userProfessor, FK_userEmpresa)
 );
 
+CREATE TABLE vagasVinculo(
+	FK_loginEmpresa VARCHAR(50),
+	idVaga INT,
+    descricao VARCHAR(250),
+    
+    FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
+    
+    PRIMARY KEY(idVaga, FK_loginEmpresa)
+);
+
 CREATE TABLE empresaProfessor(
-    FK_loginEmpresa VARCHAR(50),
+	FK_idVaga INT, #"cargo"
+	FK_loginEmpresa VARCHAR(50),
     FK_loginProfessor VARCHAR(50),
-	
     FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
     FOREIGN KEY(FK_loginProfessor) REFERENCES professores(login),
+    FOREIGN KEY(FK_idVaga) REFERENCES vagasVinculo(idVaga),
+    
     PRIMARY KEY(FK_loginEmpresa, FK_loginProfessor)
 );
 
 CREATE TABLE empresaAluno(
-    FK_loginEmpresa VARCHAR(50),
+	FK_loginEmpresa VARCHAR(50),
     FK_loginAluno VARCHAR(50),
-	
+    FK_idVaga INT, #"cargo"
+    
     FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
     FOREIGN KEY(FK_loginAluno) REFERENCES alunos(login),
+    FOREIGN KEY(FK_idVaga) REFERENCES vagasVinculo(idVaga),
+    
     PRIMARY KEY(FK_loginEmpresa, FK_loginAluno)
 );
 
@@ -152,6 +164,7 @@ CREATE TABLE postsempresas(
 FK_idPost INT UNIQUE,
 FK_nomeUser VARCHAR(50),
 
+
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilempresa(nomeUser),
 FOREIGN KEY(FK_IdPost) REFERENCES posts(id),
 PRIMARY KEY(FK_nomeUser, FK_idPost)
@@ -160,7 +173,6 @@ PRIMARY KEY(FK_nomeUser, FK_idPost)
 CREATE TABLE postsSalvosAlunos(
 FK_idPost INT, 
 FK_nomeUser VARCHAR(50), 
-	
 FOREIGN KEY(FK_idPost) REFERENCES posts(id),
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
 
@@ -299,7 +311,6 @@ duracao INT,
 comentarios VARCHAR(250),
 dtComentario DATE NOT NULL,
 likes INT,
-	
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
 PRIMARY KEY(FK_IdMaterias)
 );
