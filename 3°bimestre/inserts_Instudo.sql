@@ -34,9 +34,11 @@ INSERT INTO postssalvosempresas VALUES (21, 'cesmac.01');
 
 INSERT INTO postssalvosprofessores VALUES (2, 'NelSon');
 
-INSERT INTO empresaAluno VALUES ('UFAL_oficial','LLL_Fabricio'), ('CesmacAL', 'MelrickD');
+INSERT INTO vagasVinculo VALUES ("UFAL_oficial", 1, "Procura-se Professor de física com mestrado."), ("CesmacAL", 2, "Procura-se estudante interessado na área de T.I"), ("UFAL_oficial", 3, "Procura-se estudante interessado na área de T.I");
 
-INSERT INTO empresaProfessor VALUES ('UFAL_oficial','Nenelson'), ('UFAL_oficial', 'dhs.lima');
+INSERT INTO empresaAluno VALUES ('UFAL_oficial','LLL_Fabricio', 3), ( 'CesmacAL', 'MelrickD', 2);
+
+INSERT INTO empresaProfessor VALUES (1, 'UFAL_oficial','Nenelson'), (1, 'UFAL_oficial', 'dhs.lima');
 
 INSERT INTO materias VALUES("POO-01", "Programação Orientada a Objetos", "Class"), ("BD-01", "Banco de Dados", "Normalização"),("REDES-01", "Introdução a Redes", "Camadas de Aplicação");
 
