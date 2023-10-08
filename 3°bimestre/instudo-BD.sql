@@ -1,6 +1,6 @@
 CREATE database instudo;
 USE instudo;
-
+SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE alunos(
 login VARCHAR(50) NOT NULL,
