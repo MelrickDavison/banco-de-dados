@@ -1,5 +1,6 @@
 CREATE database instudo;
 USE instudo;
+#Desabilitar restrições de chave estrangeira
 SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE alunos(
