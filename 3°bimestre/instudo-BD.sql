@@ -1,6 +1,5 @@
 CREATE database instudo;
 USE instudo;
-#Desabilitar restrições de chave estrangeira
 SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE alunos(
@@ -68,16 +67,18 @@ PRIMARY KEY(nomeUser)
 );
 
 CREATE TABLE amizadesAlunos(
-	FK_userAluno VARCHAR(50),
+    FK_userAluno VARCHAR(50),
     FK_userAluno2 VARCHAR(50),
+	
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userAluno2)
 );
 
 CREATE TABLE amizadesAlunoProfessor(
-	FK_userAluno VARCHAR(50),
+    FK_userAluno VARCHAR(50),
     FK_userProfessor VARCHAR(50),
+	
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userProfessor)
@@ -94,22 +95,25 @@ CREATE TABLE amizadesAlunoEmpresa(
 CREATE TABLE amizadesProfessorEmpresa(
     FK_userProfessor VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
+	
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userProfessor, FK_userEmpresa)
 );
 
 CREATE TABLE empresaProfessor(
-	FK_loginEmpresa VARCHAR(50),
+    FK_loginEmpresa VARCHAR(50),
     FK_loginProfessor VARCHAR(50),
+	
     FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
     FOREIGN KEY(FK_loginProfessor) REFERENCES professores(login),
     PRIMARY KEY(FK_loginEmpresa, FK_loginProfessor)
 );
 
 CREATE TABLE empresaAluno(
-	FK_loginEmpresa VARCHAR(50),
+    FK_loginEmpresa VARCHAR(50),
     FK_loginAluno VARCHAR(50),
+	
     FOREIGN KEY(FK_loginEmpresa) REFERENCES empresa(login),
     FOREIGN KEY(FK_loginAluno) REFERENCES alunos(login),
     PRIMARY KEY(FK_loginEmpresa, FK_loginAluno)
@@ -148,7 +152,6 @@ CREATE TABLE postsempresas(
 FK_idPost INT UNIQUE,
 FK_nomeUser VARCHAR(50),
 
-
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilempresa(nomeUser),
 FOREIGN KEY(FK_IdPost) REFERENCES posts(id),
 PRIMARY KEY(FK_nomeUser, FK_idPost)
@@ -157,6 +160,7 @@ PRIMARY KEY(FK_nomeUser, FK_idPost)
 CREATE TABLE postsSalvosAlunos(
 FK_idPost INT, 
 FK_nomeUser VARCHAR(50), 
+	
 FOREIGN KEY(FK_idPost) REFERENCES posts(id),
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
 
@@ -215,8 +219,8 @@ PRIMARY KEY(FK_login, FK_IdTurma)
 
 CREATE TABLE materias(
 IdMateria VARCHAR(50),
-nome VARCHAR(50),
-assuntos VARCHAR(50),
+nome VARCHAR(250),
+assuntos VARCHAR(250),
 
 PRIMARY KEY(IdMateria)
 );
@@ -289,10 +293,13 @@ PRIMARY KEY(FK_IdMaterias)
 CREATE TABLE videoAula(
 dtConteudo DATE,
 FK_IdMaterias VARCHAR(50),
+titulo VARCHAR(250),
+video VARCHAR(250),
 duracao INT,
 comentarios VARCHAR(250),
 dtComentario DATE NOT NULL,
 likes INT,
+	
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
 PRIMARY KEY(FK_IdMaterias)
 );
