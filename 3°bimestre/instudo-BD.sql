@@ -232,9 +232,19 @@ PRIMARY KEY(FK_login, FK_IdTurma)
 CREATE TABLE materias(
 IdMateria VARCHAR(50),
 nome VARCHAR(250),
-assuntos VARCHAR(250),
 
 PRIMARY KEY(IdMateria)
+);
+
+CREATE TABLE assuntosMaterias(
+Id INT,
+FK_IdMateria VARCHAR(50),
+nome VARCHAR(50),
+descrição VARCHAR(250),
+
+FOREIGN KEY(FK_IdMateria) REFERENCES materias(IdMateria),
+
+PRIMARY KEY(Id, FK_IdMateria)
 );
 
 CREATE TABLE materiaProf(
@@ -247,23 +257,18 @@ FOREIGN KEY(FK_IdMateria) REFERENCES materias(IdMateria),
 PRIMARY KEY(FK_login, FK_IdMateria)
 );
 
-CREATE TABLE materiaAluno(
-FK_login VARCHAR(50),
-FK_IdMateria VARCHAR(50),
-
-FOREIGN KEY(FK_login) REFERENCES alunos(login),
-FOREIGN KEY(FK_IdMateria) REFERENCES materias(IdMateria),
-
-PRIMARY KEY(FK_login, FK_IdMateria)
-);
 
 CREATE TABLE atividades(
 Id INT,
 FK_IdMaterias VARCHAR(50),
+FK_IdAssunto INT,
+titulo VARCHAR(250),
 quantPontos INT,
 gabarito VARCHAR(50),
 
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
+FOREIGN KEY(FK_IdAssunto) REFERENCES assuntosMaterias(Id),
+
 PRIMARY KEY(Id, FK_IdMaterias)
 );
 
@@ -271,12 +276,15 @@ PRIMARY KEY(Id, FK_IdMaterias)
 CREATE TABLE atividadeTurma(
 FK_IdAtividade INT,
 FK_IdTurma INT,
+FK_IdAssunto INT,
 comentarios VARCHAR(250),
 dataAtividade DATE,
 
 FOREIGN KEY(FK_IdTurma) REFERENCES turmas(ID),
 FOREIGN KEY(FK_IdAtividade) REFERENCES atividades(Id),
+FOREIGN KEY(FK_IdAssunto) REFERENCES assuntosMaterias(Id),
 
+	
 PRIMARY KEY(FK_IdAtividade, FK_IdTurma)
 
 );
