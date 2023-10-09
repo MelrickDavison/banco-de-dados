@@ -47,5 +47,26 @@ SELECT e.nome AS nomeEmpresa, vv.descricao FROM vagasVinculo vv JOIN empresa e O
 #Rede Social
 SELECT conteudo, likes FROM posts;
 SELECT * FROM storysAluno;
+
+#conversa
+SELECT conversa from amizadesalunos;
+
+#Bate-papo
+SELECT conversa from amizadesalunos WHERE FK_userAluno = "fabricio_arcanjo.09" AND FK_userAluno2 = "Melrickkj";
+
+#storys
+SELECT pa.nomeUser, s.conteudo FROM perfilAluno pa JOIN storysAluno sa ON sa.FK_nomeUser = pa.nomeUser JOIN storys s ON s.IdStory = sa.FK_IdStory; 
+
+#procurar
+SELECT conteudo FROM posts;
+
+#perfil 
+SELECT nomeUser, seguidores FROM perfilAluno WHERE FK_login = "LLL_Fabricio";
+SELECT p.conteudo FROM posts p JOIN postsaluno pa ON p.Id = pa.FK_Idpost
+JOIN perfilaluno pe ON pe.nomeUser = pa.FK_nomeUser WHERE pe.nomeUser = "fabricio_arcanjo.09";
+#perfil adicionar
+SELECT nomeUser, seguidores FROM perfilAluno WHERE FK_login = "MelrickD";
+SELECT p.conteudo FROM posts p JOIN postsaluno pa ON p.Id = pa.FK_Idpost
+JOIN perfilaluno pe ON pe.nomeUser = pa.FK_nomeUser WHERE pe.nomeUser = "Melrickkj";
 SELECT * FROM storysProfessores;
 SELECT * FROM storys
