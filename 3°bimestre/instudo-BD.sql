@@ -36,6 +36,7 @@ cnpj VARCHAR(18) NOT NULL,
 PRIMARY KEY(login)
 );
 
+
 CREATE TABLE perfilAluno(
 FK_login VARCHAR(50),
 nomeUser VARCHAR(50) NOT NULL UNIQUE,
@@ -45,21 +46,6 @@ seguidores INT,
 FOREIGN KEY(FK_login) REFERENCES alunos(login),
 PRIMARY KEY(nomeUser)
 );
-
-CREATE TABLE storysAluno(
-idStory INT,
-FK_nomeUser VARCHAR(50),
-
-
-conteudo VARCHAR(250),
-dataDeCriacao DATE,
-
-FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
-
-PRIMARY KEY(idStory, FK_nomeUser)
-);
-
-
 
 CREATE TABLE perfilEmpresa(
 FK_login VARCHAR(50),
@@ -72,17 +58,6 @@ PRIMARY KEY(nomeUser)
 );
 
 
-CREATE TABLE storysEmpresa(
-idStory INT,
-FK_nomeUser VARCHAR(50),
-
-conteudo VARCHAR(250),
-dataDeCriacao DATE,
-
-FOREIGN KEY(FK_nomeUser) REFERENCES perfilEmpresa(nomeUser),
-
-PRIMARY KEY(idStory, FK_nomeUser)
-);
 
 CREATE TABLE perfilprofessores(
 FK_login VARCHAR(50),
@@ -95,16 +70,39 @@ PRIMARY KEY(nomeUser)
 );
 
 
-CREATE TABLE storysProfessores(
+CREATE TABLE storys(
 idStory INT,
-FK_nomeUser VARCHAR(50),
-
 conteudo VARCHAR(250),
 dataDeCriacao DATE,
+primary key(idStory)
+);
 
+CREATE TABLE storysAluno(
+FK_nomeUser VARCHAR(50),
+FK_idStory INT,
+FOREIGN KEY(FK_idStory) REFERENCES storys(idStory),
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
+
+PRIMARY KEY(FK_idStory, FK_nomeUser)
+);
+
+CREATE TABLE storysEmpresa(
+FK_nomeUser VARCHAR(50),
+FK_idStory INT,
+FOREIGN KEY(FK_idStory) REFERENCES storys(idStory),
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilEmpresa(nomeUser),
+
+PRIMARY KEY(FK_idStory, FK_nomeUser)
+);
+
+
+CREATE TABLE storysProfessores(
+FK_nomeUser VARCHAR(50),
+FK_idStory INT,
+FOREIGN KEY(FK_idStory) REFERENCES storys(idStory),
 FOREIGN KEY(FK_nomeUser) REFERENCES perfilProfessores(nomeUser),
 
-PRIMARY KEY(idStory, FK_nomeUser)
+PRIMARY KEY(FK_idStory, FK_nomeUser)
 );
 
 CREATE TABLE amizadesAlunos(
@@ -311,6 +309,7 @@ dataAtividade DATE,
 titulo VARCHAR(250),
 quantPontos INT,
 gabarito VARCHAR(50),
+comentarios VARCHAR(250),
 
 FOREIGN KEY(FK_IdMaterias) REFERENCES materias(IdMateria),
 FOREIGN KEY(FK_IdAssunto) REFERENCES assuntosMaterias(Id),
