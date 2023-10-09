@@ -46,6 +46,21 @@ FOREIGN KEY(FK_login) REFERENCES alunos(login),
 PRIMARY KEY(nomeUser)
 );
 
+CREATE TABLE storysAluno(
+idStory INT,
+FK_nomeUser VARCHAR(50),
+
+
+conteudo VARCHAR(250),
+dataDeCriacao DATE,
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilAluno(nomeUser),
+
+PRIMARY KEY(idStory, FK_nomeUser)
+);
+
+
+
 CREATE TABLE perfilEmpresa(
 FK_login VARCHAR(50),
 nomeUser VARCHAR(50) UNIQUE,
@@ -54,6 +69,19 @@ seguidores INT,
 
 FOREIGN KEY(FK_login) REFERENCES empresa(login),
 PRIMARY KEY(nomeUser)
+);
+
+
+CREATE TABLE storysEmpresa(
+idStory INT,
+FK_nomeUser VARCHAR(50),
+
+conteudo VARCHAR(250),
+dataDeCriacao DATE,
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilEmpresa(nomeUser),
+
+PRIMARY KEY(idStory, FK_nomeUser)
 );
 
 CREATE TABLE perfilprofessores(
@@ -66,9 +94,23 @@ FOREIGN KEY(FK_login) REFERENCES professores(login),
 PRIMARY KEY(nomeUser)
 );
 
+
+CREATE TABLE storysProfessores(
+idStory INT,
+FK_nomeUser VARCHAR(50),
+
+conteudo VARCHAR(250),
+dataDeCriacao DATE,
+
+FOREIGN KEY(FK_nomeUser) REFERENCES perfilProfessores(nomeUser),
+
+PRIMARY KEY(idStory, FK_nomeUser)
+);
+
 CREATE TABLE amizadesAlunos(
 	FK_userAluno VARCHAR(50),
     FK_userAluno2 VARCHAR(50),
+    conversa VARCHAR(250),
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userAluno2) REFERENCES perfilAluno(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userAluno2)
@@ -77,6 +119,7 @@ CREATE TABLE amizadesAlunos(
 CREATE TABLE amizadesAlunoProfessor(
 	FK_userAluno VARCHAR(50),
     FK_userProfessor VARCHAR(50),
+    conversa VARCHAR(250),
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userProfessor)
@@ -85,6 +128,7 @@ CREATE TABLE amizadesAlunoProfessor(
 CREATE TABLE amizadesAlunoEmpresa(
 	FK_userAluno VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
+    conversa VARCHAR(250),
     FOREIGN KEY(FK_userAluno) REFERENCES perfilAluno(nomeUser),
     FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userAluno, FK_userEmpresa)
@@ -93,6 +137,7 @@ CREATE TABLE amizadesAlunoEmpresa(
 CREATE TABLE amizadesProfessorEmpresa(
     FK_userProfessor VARCHAR(50),
     FK_userEmpresa VARCHAR(50),
+    conversa VARCHAR(250),
     FOREIGN KEY(FK_userProfessor) REFERENCES perfilProfessores(nomeUser),
     FOREIGN KEY(FK_userEmpresa) REFERENCES perfilEmpresa(nomeUser),
     PRIMARY KEY(FK_userProfessor, FK_userEmpresa)
@@ -262,6 +307,7 @@ CREATE TABLE atividades(
 Id INT,
 FK_IdMaterias VARCHAR(50),
 FK_IdAssunto INT,
+dataAtividade DATE,
 titulo VARCHAR(250),
 quantPontos INT,
 gabarito VARCHAR(50),
@@ -276,14 +322,10 @@ PRIMARY KEY(Id, FK_IdMaterias)
 CREATE TABLE atividadeTurma(
 FK_IdAtividade INT,
 FK_IdTurma INT,
-FK_IdAssunto INT,
 comentarios VARCHAR(250),
-dataAtividade DATE,
 
 FOREIGN KEY(FK_IdTurma) REFERENCES turmas(ID),
 FOREIGN KEY(FK_IdAtividade) REFERENCES atividades(Id),
-FOREIGN KEY(FK_IdAssunto) REFERENCES assuntosMaterias(Id),
-
 	
 PRIMARY KEY(FK_IdAtividade, FK_IdTurma)
 
