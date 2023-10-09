@@ -12,11 +12,13 @@ INSERT INTO perfilempresa VALUES ('CesmacAL','cesmac.01','2009-08-26', 109000), 
 
 INSERT INTO perfilprofessores VALUES ('Nenelson','NelSon','2010-01-15', 19000),('dhs.lima','dhs.lima','2017-03-25', 231),('pabloDosTeclados','Pablo','2007-07-07', 156);
 
-INSERT INTO storysaluno VALUES (1, 'fabricio_arcanjo.09', 'foto', '2023-10-08');
+INSERT INTO storys VALUES(1, 'foto', '2023-10-08'), (12,  'foto', '2023-10-08'), (13,  'foto', '2023-10-08');
 
-INSERT INTO storysempresa VALUES (12, 'cesmac.01', 'foto', '2023-10-08');
+INSERT INTO storysaluno VALUES ('fabricio_arcanjo.09', 1);
 
-INSERT INTO storysprofessores VALUES (13, 'NelSon', 'foto', '2023-10-08');
+INSERT INTO storysempresa VALUES ('cesmac.01', 12);
+
+INSERT INTO storysprofessores VALUES ('NelSon', 13);
 
 INSERT INTO amizadesalunos VALUES ('fabricio_arcanjo.09', 'gabrielLuiz', "Bora fazer Banco?"), ('gabrielLuiz', 'Kemylly._', ""), ('melrickkj', 'Qemmili13', ""), ('fabricio_arcanjo.09', 'Kemylly._', "sksksksksk"), ('fabricio_arcanjo.09', 'melrickkj', "Oi, tudo bem?");
 
@@ -48,7 +50,7 @@ INSERT INTO empresaProfessor VALUES (1, 'UFAL_oficial','Nenelson'), (1, 'UFAL_of
 
 INSERT INTO materias VALUES("POO-01", "Programação Orientada a Objetos"), ("BD-01", "Banco de Dados"),("REDES-01", "Introdução a Redes");
 
-INSERT INTO atividades VALUES(1, "POO-01", 2, "2023-09-08", "Atividade de Classes", 100, "B, C, E, F"), (2, "BD-01", 3, '2022-04-01', 'Atividade Recuperação', 1, "D, C, F, F"),(3, "REDES-01", 1, '2021-05-23', 'Atividade Fixação', 1000, "A, C, E, C"), (4, "BD-01", 5, "2022-04-02", "Atividade MySql",  10, "A, B, C, D");
+INSERT INTO atividades VALUES(1, "POO-01", 2, "2023-09-08", "Atividade de Classes", 100, "B, C, E, F", ""), (2, "BD-01", 3, '2022-04-01', 'Atividade Recuperação', 1, "D, C, F, F", ""),(3, "REDES-01", 1, '2021-05-23', 'Atividade Fixação', 1000, "A, C, E, C", ""), (4, "BD-01", 5, "2022-04-02", "Atividade MySql",  10, "A, B, C, D", "");
 
 INSERT INTO assuntosmaterias VALUES( 2, "POO-01", "Classes", "Conceito e macetes"), ( 3, "BD-01", "Entidade Relacionamento", "Dicas de como fazer"), ( 1, "REDES-01", "Camada de Aplicação", "Conceitos"), ( 5, "BD-01", "MySql", "Instalar e atalhos");
 
