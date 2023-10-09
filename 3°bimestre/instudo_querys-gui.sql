@@ -12,6 +12,12 @@ INSERT INTO perfilempresa VALUES ('CesmacAL','cesmac.01','2009-08-26', 109000), 
 
 INSERT INTO perfilprofessores VALUES ('Nenelson','NelSon','2010-01-15', 19000),('dhs.lima','dhs.lima','2017-03-25', 231),('pabloDosTeclados','Pablo','2007-07-07', 156);
 
+INSERT INTO storysaluno VALUES (1, 'fabricio_arcanjo.09', 'foto', '2023-10-08');
+
+INSERT INTO storysaempresa VALUES (12, 'cesmac.01', 'foto', '2023-10-08');
+
+INSERT INTO storysprofessores VALUES (13, 'NelSon', 'foto', '2023-10-08');
+
 INSERT INTO amizadesalunos VALUES ('fabricio_arcanjo.09', 'gabrielLuiz'), ('gabrielLuiz', 'Kemylly._'), ('melrickkj', 'Qemmili13'), ('fabricio_arcanjo.09', 'Kemylly._'), ('fabricio_arcanjo.09', 'melrickkj');
 
 INSERT INTO amizadesalunoprofessor VALUES ('fabricio_arcanjo.09', 'NelSon'), ('gabrielLuiz', 'NelSon'), ('melrickkj', 'dhs.lima'), ('fabricio_arcanjo.09', 'dhs.lima'), ('fabricio_arcanjo.09', 'pabloDosTeclados'), ('Kemylly._', 'dhs.lima');
@@ -42,11 +48,13 @@ INSERT INTO empresaProfessor VALUES (1, 'UFAL_oficial','Nenelson'), (1, 'UFAL_of
 
 INSERT INTO materias VALUES("POO-01", "Programação Orientada a Objetos", "Class"), ("BD-01", "Banco de Dados", "Normalização"),("REDES-01", "Introdução a Redes", "Camadas de Aplicação");
 
-INSERT INTO atividades VALUES(1, "POO-01", 100, "B, C, E, F"), (2, "BD-01", 1, "D, C, F, F"),(3, "REDES-01", 1000, "A, C, E, C"), (4, "BD-01",  10, "A, B, C, D");
+INSERT INTO atividades VALUES(1, "POO-01", 2, "2023-09-08", "Atividade de Classes", 100, "B, C, E, F"), (2, "BD-01", 3, '2022-04-01', 'Atividade Recuperação', 1, "D, C, F, F"),(3, "REDES-01", 1, '2021-05-23', 'Atividade Fixação', 1000, "A, C, E, C"), (4, "BD-01", 5, "2022-04-02", "Atividade MySql",  10, "A, B, C, D");
+
+INSERT INTO assuntosatividades VALUES( 2, "POO-01", "Classes", "Conceito e macetes"), ( 3, "BD-01", "Entidade Relacionamento", "Dicas de como fazer"), ( 1, "REDES-01", "Camada de Aplicação", "Conceitos"), ( 5, "BD-01", "MySql", "Instalar e atalhos");
 
 INSERT INTO atividadealunos VALUES (1, 'BielzinhoDelas', "A, A, A, A", 9), (2, 'BielzinhoDelas', "B, A, D, A", 0), (3, 'BielzinhoDelas', "A, C, E, C", 1000),  (1, 'MelrickD', "A, C, A, F", 6), (2, 'MelrickD', "D, C, F, F", 1), (3, 'MelrickD', "D, C, F, F", 890),  (1, 'LLL_Fabricio', "B, C, E, F", 10), (2, 'LLL_Fabricio', "D, C, F, F", 1), (3, 'LLL_Fabricio', "A, C, E, C", 1000), (1, 'Qemmili13', "B, C, E, F", 10), (2, 'Qemmili13', "D, C, F, F",  1), (3, 'Qemmili13', "A, C, E, A", 999);  
 
-INSERT INTO atividadeturma VALUES (4, 3, "", "2023-10-08");
+INSERT INTO atividadeturma VALUES (4, 3, "");
 
 INSERT INTO conteudo VALUES('2020-01-01', "POO-01", "Apostila 12"), ('2020-01-01', "BD-01","Apostila 134"),('2020-01-01', "REDES-01", "Apostila 189");
 
