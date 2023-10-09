@@ -50,7 +50,7 @@ INSERT INTO empresaProfessor VALUES (1, 'UFAL_oficial','Nenelson'), (1, 'UFAL_of
 
 INSERT INTO materias VALUES("POO-01", "Programação Orientada a Objetos"), ("BD-01", "Banco de Dados"),("REDES-01", "Introdução a Redes");
 
-INSERT INTO atividades VALUES(1, "POO-01", 2, "2023-09-08", "Atividade de Classes", 100, "B, C, E, F", ""), (2, "BD-01", 3, '2022-04-01', 'Atividade Recuperação', 1, "D, C, F, F", ""),(3, "REDES-01", 1, '2021-05-23', 'Atividade Fixação', 1000, "A, C, E, C", ""), (4, "BD-01", 5, "2022-04-02", "Atividade MySql",  10, "A, B, C, D", "");
+INSERT INTO atividades VALUES(1, "Nenelson", "POO-01", 2, "2023-09-08", "Atividade de Classes", 100, "B, C, E, F", ""), (2, "dhs.lima", "BD-01", 3, '2022-04-01', 'Atividade Recuperação', 1, "D, C, F, F", ""),(3, "pabloDosTeclado", "REDES-01", 1, '2021-05-23', 'Atividade Fixação', 1000, "A, C, E, C", ""), (4, "dhs.lima","BD-01", 5, "2022-04-02", "Atividade MySql",  10, "A, B, C, D", "");
 
 INSERT INTO assuntosmaterias VALUES( 2, "POO-01", "Classes", "Conceito e macetes"), ( 3, "BD-01", "Entidade Relacionamento", "Dicas de como fazer"), ( 1, "REDES-01", "Camada de Aplicação", "Conceitos"), ( 5, "BD-01", "MySql", "Instalar e atalhos");
 
@@ -58,9 +58,9 @@ INSERT INTO atividadealunos VALUES (1, 'BielzinhoDelas', "A, A, A, A", 9), (2, '
 
 INSERT INTO atividadeturma VALUES (4, 3, "");
 
-INSERT INTO conteudo VALUES('2020-01-01', "POO-01", "Apostila 12"), ('2020-01-01', "BD-01","Apostila 134"),('2020-01-01', "REDES-01", "Apostila 189");
+INSERT INTO conteudo VALUES('2020-01-01', "POO-01", "Nenelson", "Apostila 12"), ('2020-01-01', "BD-01", "dhs.lima","Apostila 134"),('2020-01-01', "REDES-01", "pabloDosTeclados","Apostila 189");
 
-INSERT INTO videoaula VALUES('2020-01-01', "POO-01", "Classes","", 156, 'Belissima', '2021-09-30', 100), ('2023-07-09', "BD-01", "Entidade Relacionamento", "", 30, 'Amei', '2023-07-09', 900),('2022-10-01', "REDES-01", "Camada de Aplicação", "",34, 'ODEIO REDES', '2022-10-01', 2);
+INSERT INTO videoaula VALUES("Nenelson", '2020-01-01', "POO-01", "Classes","", 156, 'Belissima', '2021-09-30', 100), ("dhs.lima", '2023-07-09', "BD-01", "Entidade Relacionamento", "", 30, 'Amei', '2023-07-09', 900),("pabloDosTeclados", '2022-10-01', "REDES-01", "Camada de Aplicação", "",34, 'ODEIO REDES', '2022-10-01', 2);
 
 INSERT INTO alunoturma VALUES ("BielzinhoDelas", 2022305322 , 2), ('LLL_Fabricio', 2022308, 3), ('MelrickD', 2022192023, 3), ('Qemmili13', 12341214, 2), ("BielzinhoDelas", 2022305322, 4),('LLL_Fabricio', 2022308, 2),('Qemmili13', 12341214, 3), ('Qemmili13', 12341214, 4);
 
