@@ -2,21 +2,10 @@
 SELECT t.nome, t.Id FROM turmas t JOIN alunoturma atu ON t.Id = atu.FK_IdTurma GROUP BY t.Id ORDER BY count(*) DESC;
 
 # Quem são os melhores estudantes em cada atividade
-SELECT * FROM atividadealunos GROUP BY FK_IdAtividade, FK_Login ORDER BY MAX(pontosConquistados) DESC;
-
-
-
 SELECT aa.FK_Login AS Nome, atv.Id AS Atividade, aa.pontosConquistados AS Pontos FROM atividadealunos aa 
 JOIN atividades atv ON atv.Id = aa.FK_IdAtividade
 JOIN alunos a ON aa.FK_Login = a.Login
 GROUP BY FK_IdAtividade, aa.FK_Login ORDER BY pontosConquistados DESC; 
-
-
-SELECT a.nome, atv.Id AS Atividade FROM alunos a 
-JOIN atividadealunos aa ON a.login = aa.FK_Login 
-JOIN atividades atv ON atv.Id = aa.FK_IdAtividade
-GROUP BY atv.Id
-ORDER BY pontosConquistados DESC;
 
 # Listar todos os posts de um determinado estudante
 SELECT * FROM postsaluno WHERE FK_nomeUser = "fabricio_arcanjo.09";
