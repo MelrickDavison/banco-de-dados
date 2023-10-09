@@ -27,7 +27,7 @@ SELECT titulo, video FROM videoAula;
 SELECT nome FROM turmas;
 SELECT * FROM atividadeturma atu JOIN atividades atv ON atv.Id = atu.FK_IdAtividade;
 
-#Participantes Turma;
+#Alunos participantes Turma;
 SELECT a.nome FROM alunos a JOIN alunoTurma atu ON atu.FK_login = a.login
 JOIN turmas t ON t.Id = atu.FK_IdTurma WHERE t.nome = "Matemática";
 #Atividade da turma
@@ -46,7 +46,7 @@ SELECT e.nome AS nomeEmpresa, vv.descricao FROM vagasVinculo vv JOIN empresa e O
 
 #Rede Social
 SELECT conteudo, likes FROM posts;
-SELECT * FROM storysAluno;
+SELECT * FROM storys;
 
 #conversa
 SELECT conversa from amizadesalunos;
@@ -68,5 +68,39 @@ JOIN perfilaluno pe ON pe.nomeUser = pa.FK_nomeUser WHERE pe.nomeUser = "fabrici
 SELECT nomeUser, seguidores FROM perfilAluno WHERE FK_login = "MelrickD";
 SELECT p.conteudo FROM posts p JOIN postsaluno pa ON p.Id = pa.FK_Idpost
 JOIN perfilaluno pe ON pe.nomeUser = pa.FK_nomeUser WHERE pe.nomeUser = "Melrickkj";
-SELECT * FROM storysProfessores;
-SELECT * FROM storys
+
+#Professor
+#Perfil visualização Curriculo
+SELECT curriculo FROM professores WHERE login = "dhs.lima";
+
+#Perfil professor 
+SELECT foto, nome, curriculo FROM professores WHERE login = "dhs.lima";
+SELECT apostilas FROM  conteudo WHERE FK_login = "dhs.lima";
+SELECT nomeUser FROM perfilprofessores WHERE FK_login = "dhs.lima";
+
+#Inicial professor
+SELECT apostilas FROm conteudo;
+
+#Vagas de professores
+SELECT FK_loginEmpresa AS empresa, descricao FROM vagasvinculo;
+
+#Turmas Professores
+SELECT t.nome FROM turmas t JOIN profturma pf ON pf.FK_IdTurma = t.ID WHERE pf.FK_login = "dhs.lima";
+
+#Perfil rede social professor
+SELECT p.foto, pe.nomeUser, p.curriculo, pe.seguidores FROM professores p JOIN perfilprofessores pe ON pe.FK_login = p.login WHERE login = "Nenelson";
+SELECT p.conteudo FROM posts p JOIN postsProfessores pp ON p.Id = pp.FK_IdPost WHERE pp.FK_nomeUser = "NelSon";
+
+#Empresa
+#Perfil Empresa
+SELECT nome, foto FROM empresa WHERE nome = "CESMAC";
+SELECT * FROM posts p JOIN postsEmpresas pe ON pe.FK_IdPost = p.Id WHERE pe.FK_nomeUser = "cesmac.01"; 
+#vagas de emprego 
+SELECT v.descricao FROM vagasVinculo v JOIN empresa e ON e.login = v.FK_loginEmpresa WHERE e.login = "CesmacAL";
+
+#candidatos
+SELECT FK_loginProfessor FROM empresaProfessor WHERE FK_loginEmpresa = "CesmacAl";
+
+#perfil Rede social Empresa
+SELECT e.foto, pe.nomeUser, pe.seguidores FROM empresa e JOIN perfilempresa pe ON pe.FK_login = e.login WHERE e.login = "CesmacAL";
+SELECT p.conteudo FROM posts p JOIN postsEmpresas pe ON p.Id = pe.FK_IdPost  WHERE pe.FK_nomeUser = "cesmac.01";
