@@ -16,7 +16,14 @@ connection.connect((err) => {
     console.log("Conectado ao BD!");
 });
 
-
+const sql = "SELECT * FROM usuario";
+connection.query(sql, (err, results) => {
+    if (err) {
+        console.log("Erro na consulta: ", err);
+        return;
+    }
+    console.log("Resultado da consulta: ", results)
+})
 
 connection.end((err) => {
     if (err) {
