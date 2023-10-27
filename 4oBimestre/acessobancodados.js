@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   password: 'admin',
   database: 'acessobd',
   port: 3306, // Porta do MySQL, ajuste se necessário
-});
+});AbortSignal=
 
 connection.connect((err) => {
   if (err) {
