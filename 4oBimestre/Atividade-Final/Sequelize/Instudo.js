@@ -243,3 +243,145 @@ const Materia = sequelize.define('materia', {
 
 });
 
+const PerfilAluno = sequelize.define('perfilAluno', {
+    nomeUser: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+
+    dataCriacao: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+
+    seguidores: {
+        type: DataTypes.INTEGER
+    }
+
+});
+
+Aluno.hasMany(PerfilAluno);
+PerfilAluno.belongsTo(Aluno);
+
+const PerfilProfessor = sequelize.define('perfilProfessor', {
+    nomeUser: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+
+    dataCriacao: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+
+    seguidores: {
+        type: DataTypes.INTEGER
+    }
+
+});
+
+Professor.hasMany(PerfilProfessor);
+PerfilProfessor.belongsTo(Professor);
+
+const PerfilEmpresa= sequelize.define('perfilEmpresa', {
+    nomeUser: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+
+    dataCriacao: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+
+    seguidores: {
+        type: DataTypes.INTEGER
+    }
+
+});
+
+Empresa.hasMany(PerfilEmpresa);
+PerfilEmpresa.belongsTo(Empresa);
+
+//-----------------------------------
+Aluno.hasMany(storysAluno);
+Empresa.hasMany(storysEmpresa);
+Professor.hasMany(storysProfessor);
+
+//-------------------------------------
+
+const amizadeAlunoProfessor = sequelize.define('amizadeProfAluno', {
+    convesa:{
+        type: DataTypes.STRING
+    }
+})
+
+Aluno.belongsToMany(amizadeAlunoProfessor);
+Professor.belongsToMany(amizadeAlunoProfessor);
+
+
+const amizadeAlunoEmpresa = sequelize.define('amizadeEmpAluno', {
+    convesa:{
+        type: DataTypes.STRING
+    }
+})
+
+Aluno.belongsToMany(amizadeAlunoEmpresa);
+Empresa.belongsToMany(amizadeAlunoEmpresa);
+
+
+const amizadeAlunos = sequelize.define('amizadeAlunos', {
+    convesa:{
+        type: DataTypes.STRING
+    }
+})
+
+Aluno.belongsToMany(amizadeAlunos);
+Aluno.belongsToMany(amizadeAlunos);
+
+
+const amizadeProfessorEmpresa = sequelize.define('amizadeProfEmpresa', {
+    convesa:{
+        type: DataTypes.STRING
+    }
+})
+
+Empresa.belongsToMany(amizadeProfessorEmpresa);
+Professor.belongsToMany(amizadeProfessorEmpresa);
+
+//-------------------------------------------------------
+
+const vagasVinculos = sequelize.define('vagaVinculos', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+
+    descricao: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+
+})
+
+Empresa.hasMany(vagasVinculos);
+vagasVinculos.belongsTo(Empresa);
+
+//---------------------------------------------------------------
+
+Empresa.belongsToMany(empresaAluno);
+Aluno.belongsToMany(empresaAluno);
+
+//
+
+
+
+
