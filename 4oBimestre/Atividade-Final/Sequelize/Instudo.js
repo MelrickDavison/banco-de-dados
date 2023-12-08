@@ -393,10 +393,13 @@ Aluno.belongsToMany(empresaAluno);
 
 //---------------------------------------------
 //postsSalvosAlunos
+Aluno.belongsToMany(postsSalvosAlunos)
 
 //PostsSalvosProfessores
+Professor.belongsToMany(PostsSalvosProfessores)
 
 //PostsSalvosEmpresas
+Empresa.belongsToMany(PostsSalvosEmpresas)
 
 //---------------------------------------------
 
