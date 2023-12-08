@@ -403,13 +403,37 @@ Aluno.belongsToMany(empresaAluno);
 //profTurma
 
 //alunoTurma
+Aluno.belongsToMany(alunoTurma);
+Turma.belongsToMany(alunoTurma);
+
 
 //---------------------------------------------
 //assuntosMaterias
+const AssuntosMaterias = sequelize.define('AssuntosMaterias', {
+   id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    unique: true
+   },
 
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true
+    },
+    descricao: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 
+});
+
+    Materia.hasMany(AssuntosMaterias);
+    AssuntosMaterias.belongsTo(Materia);
 
 //materiaProf
+Professor.belongsToMany(materiaProf);
+Materia.belongsToMany(materiaProf);
 
 //---------------------------------------------
 //Atividades
@@ -427,9 +451,28 @@ const Atividade = sequelize.define('Atividade', {
     titulo: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    quantPontos: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    gabarito: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    comentarios: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 
 });
+Materia.hasMany(Atividade);
+Atividade.belongsToMany(Materia);
+AssuntosMaterias.hasMany(Atividade);
+Atividade.belongsToMany(AssuntosMaterias);
+
+
 //atividadeTurma
 const AtividadeTurma = sequelize.define('AtividadeTurma', {
     comentarios: {
@@ -440,11 +483,23 @@ const AtividadeTurma = sequelize.define('AtividadeTurma', {
 
 });
 
-Atividade.belongsToMany(Course, { through: UserCourse }); // Relacionamento N-M: Um usuário pode ter muitos cursos
-Course.belongsToMany(User, { through: UserCourse });
+Atividade.belongsToMany(Turma, { through: AtividadeTurma }); // Relacionamento N-M: Um usuário pode ter muitos cursos
+Turma.belongsToMany(Atividade, { through: AtividadeTurma });
 
 //AtividadeAlunos
+const AtividadeAlunos = sequelize.define('AtividadeAlunos', {
+    resposta: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    pontosConquistados: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 
+});
+Atividade.belongsToMany(Aluno, { through: AtividadeAlunos }); // Relacionamento N-M: Um usuário pode ter muitos cursos
+Aluno.belongsToMany(Atividade, { through: AtividadeAlunos });
 //---------------------------------------------
 
 //conteudo
