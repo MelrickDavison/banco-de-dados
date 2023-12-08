@@ -393,17 +393,22 @@ Aluno.belongsToMany(empresaAluno);
 
 //---------------------------------------------
 //postsSalvosAlunos
-Aluno.belongsToMany(postsSalvosAlunos)
+Aluno.hasMany(postsSalvosAlunos)
+postsSalvosAlunos.belongsTo(Aluno)
 
 //PostsSalvosProfessores
-Professor.belongsToMany(PostsSalvosProfessores)
+Professor.hasMany(PostsSalvosProfessores)
+PostsSalvosProfessores.belongsTo(Professor)
 
 //PostsSalvosEmpresas
-Empresa.belongsToMany(PostsSalvosEmpresas)
+Empresa.hasMany(PostsSalvosEmpresas)
+PostsSalvosEmpresas.belongsTo(Empresa)
 
 //---------------------------------------------
 
 //profTurma
+Professor.belongsToMany(profTurma)
+Turma.belongsToMany(profTurma)
 
 //alunoTurma
 Aluno.belongsToMany(alunoTurma);
