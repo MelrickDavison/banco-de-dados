@@ -355,7 +355,7 @@ const amizadeProfessorEmpresa = sequelize.define('amizadeProfEmpresa', {
 Empresa.belongsToMany(amizadeProfessorEmpresa);
 Professor.belongsToMany(amizadeProfessorEmpresa);
 
-//-------------------------------------------------------
+//---------------------------------------------
 
 const vagasVinculos = sequelize.define('vagaVinculos', {
     id: {
@@ -375,13 +375,141 @@ const vagasVinculos = sequelize.define('vagaVinculos', {
 Empresa.hasMany(vagasVinculos);
 vagasVinculos.belongsTo(Empresa);
 
-//---------------------------------------------------------------
-
+//---------------------------------------------
+//EmpresaAluno
 Empresa.belongsToMany(empresaAluno);
 Aluno.belongsToMany(empresaAluno);
 
-//
+//EmpresaProfessor
 
 
 
+//--------------------------------------------
+//PostsAlunos
 
+//PostsProfessores
+
+//postsEmpresas
+
+//---------------------------------------------
+//postsSalvosAlunos
+
+//PostsSalvosProfessores
+
+//PostsSalvosEmpresas
+
+//---------------------------------------------
+
+//profTurma
+
+//alunoTurma
+
+//---------------------------------------------
+//assuntosMaterias
+
+
+
+//materiaProf
+
+//---------------------------------------------
+//Atividades
+
+const Atividade = sequelize.define('Atividade', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
+    data: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+
+});
+//atividadeTurma
+const AtividadeTurma = sequelize.define('AtividadeTurma', {
+    comentarios: {
+        type: DataTypes.STRING,
+        allowNull: true
+
+    }
+
+});
+
+Atividade.belongsToMany(Course, { through: UserCourse }); // Relacionamento N-M: Um usuário pode ter muitos cursos
+Course.belongsToMany(User, { through: UserCourse });
+
+//AtividadeAlunos
+
+//---------------------------------------------
+
+//conteudo
+const Conteudo = sequelize.define('Conteudo', {
+
+    dataConteudo: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+    
+    conteudo: {
+        type: DataTypes.STRING,
+        allowNull: false
+
+    }
+
+});
+Materia.hasMany(Conteudo);
+Conteudo.belongsTo(Materia)
+Professor.hasMany(Conteudo);
+Conteudo.belongsTo(Professor);
+//videoAula
+
+const VideoAula = sequelize.define('videoAula', {
+
+    dataConteudo: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+
+    titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+
+    },
+    
+    video: {
+        type: DataTypes.STRING,
+        allowNull: false
+
+    },
+    
+    duracao: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+
+    },
+    
+    comentarios: {
+        type: DataTypes.STRING
+    },
+    
+    dtComentarios: {
+        type: DataTypes.DATE,
+        allowNull: false
+
+    },
+    
+    likes: {
+        type: DataTypes.INTEGER
+    }
+
+});
+
+Materia.hasMany(VideoAula);
+VideoAula.belongsTo(Materia)
+Professor.hasMany(VideoAula);
+VideoAula.belongsTo(Professor);
