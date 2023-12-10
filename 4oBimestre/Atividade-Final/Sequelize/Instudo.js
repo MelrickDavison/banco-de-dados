@@ -381,15 +381,21 @@ Empresa.belongsToMany(empresaAluno);
 Aluno.belongsToMany(empresaAluno);
 
 //EmpresaProfessor
-
-
+Empresa.belongsToMany(empresaProfessor);
+Professor.belongsToMany(empresaProfessor);
 
 //--------------------------------------------
 //PostsAlunos
+Aluno.belongsToMany(postsAluno);
+Posts.belongsToMany(postsAluno);
 
 //PostsProfessores
+Professor.belongsToMany(postsProfessor);
+Posts.belongsToMany(postsProfessor);
 
 //postsEmpresas
+Empresa.belongsToMany(postsEmpresa);
+Posts.belongsToMany(postsEmpresa);
 
 //---------------------------------------------
 //postsSalvosAlunos
